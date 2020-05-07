@@ -8,6 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Shipment.Api.Handlers;
+using Shipment.Common.Events;
+using Shipment.Common.RabbitMq;
 
 namespace Shipment.Api
 {
@@ -24,6 +27,8 @@ namespace Shipment.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddRabbitMq(Configuration);
+            services.AddScoped<IEventHandler<ActivityCreated>, ActivityCreatedHandler> ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,5 @@
+C:\paddy\research\microservices\shipment\src\Shipment.Api\bin\Debug\netcoreapp2.0\Shipment.Common.dll
+C:\paddy\research\microservices\shipment\src\Shipment.Api\obj\Debug\netcoreapp2.0\Shipment.Api.csprojAssemblyReference.cache
+C:\paddy\research\microservices\shipment\src\Shipment.Api\obj\Debug\netcoreapp2.0\Shipment.Api.AssemblyInfoInputs.cache
+C:\paddy\research\microservices\shipment\src\Shipment.Api\obj\Debug\netcoreapp2.0\Shipment.Api.AssemblyInfo.cs
+C:\paddy\research\microservices\shipment\src\Shipment.Api\obj\Debug\netcoreapp2.0\Shipment.Api.csproj.CoreCompileInputs.cache

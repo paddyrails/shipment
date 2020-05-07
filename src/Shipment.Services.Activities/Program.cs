@@ -7,6 +7,8 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Shipment.Common.Commands;
+using Shipment.Common.Services;
 
 namespace Shipment.Services.Activities
 {
@@ -14,12 +16,11 @@ namespace Shipment.Services.Activities
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            ServiceHost.Create<Startup>(args)
+               .UseRabbitMq()
+               .SubscribeToCommand<CreateActivity>()
+               .Build()
+               .Run();
         }
-
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
     }
 }
