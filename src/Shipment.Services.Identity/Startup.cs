@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Shipment.Common.Commands;
+using Shipment.Common.RabbitMq;
+using Shipment.Common.Mongo;
+using Shipment.Services.Identity.Domain.Services;
+//using Shipment.Common.Auth;
+using Shipment.Services.Identity.Domain.Repositories;
+using Shipment.Services.Identity.Repositories;
+using Shipment.Services.Identity.Handlers;
+using Shipment.Services.Identity.Services;
 
 namespace Shipment.Services.Identity
 {
@@ -24,6 +30,12 @@ namespace Shipment.Services.Identity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddRabbitMq(Configuration);
+            services.AddMongoDb(Configuration);
+            services.AddScoped<ICommandHandler<CreateUser>, CreateUserHandler>();
+            services.AddScoped<IEncryptor, Encryptor>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,7 +45,7 @@ namespace Shipment.Services.Identity
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.ApplicationServices.GetService<IDatabaseInitializer>().InitializeAsync();
             app.UseMvc();
         }
     }

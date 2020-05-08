@@ -1,0 +1,12 @@
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\bin\Debug\netcoreapp2.0\Shipment.Services.Activities.deps.json
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\bin\Debug\netcoreapp2.0\Shipment.Services.Activities.runtimeconfig.json
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\bin\Debug\netcoreapp2.0\Shipment.Services.Activities.runtimeconfig.dev.json
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\bin\Debug\netcoreapp2.0\Shipment.Services.Activities.dll
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\bin\Debug\netcoreapp2.0\Shipment.Services.Activities.pdb
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\bin\Debug\netcoreapp2.0\Shipment.Common.dll
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\bin\Debug\netcoreapp2.0\Shipment.Common.pdb
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\obj\Debug\netcoreapp2.0\Shipment.Services.Activities.csproj.CoreCompileInputs.cache
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\obj\Debug\netcoreapp2.0\Shipment.Services.Activities.AssemblyInfoInputs.cache
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\obj\Debug\netcoreapp2.0\Shipment.Services.Activities.AssemblyInfo.cs
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\obj\Debug\netcoreapp2.0\Shipment.Services.Activities.dll
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Activities\obj\Debug\netcoreapp2.0\Shipment.Services.Activities.pdb

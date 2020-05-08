@@ -1,20 +1,17 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using RawRabbit;
+using System;
 using Shipment.Common.Commands;
 using Shipment.Common.Events;
 using Shipment.Common.RabbitMq;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using RawRabbit;
 
 namespace Shipment.Common.Services
 {
     public class ServiceHost : IServiceHost
     {
         private readonly IWebHost _webHost;
-
         public ServiceHost(IWebHost webHost)
         {
             _webHost = webHost;
@@ -26,9 +23,9 @@ namespace Shipment.Common.Services
         {
             Console.Title = typeof(TStartup).Namespace;
             var config = new ConfigurationBuilder()
-                    .AddEnvironmentVariables()
-                    .AddCommandLine(args)
-                    .Build();
+                .AddEnvironmentVariables()
+                .AddCommandLine(args)
+                .Build();
             var webHostBuilder = WebHost.CreateDefaultBuilder(args)
                 .UseConfiguration(config)
                 .UseStartup<TStartup>();
@@ -36,59 +33,58 @@ namespace Shipment.Common.Services
             return new HostBuilder(webHostBuilder.Build());
         }
 
-        public abstract class BuilderBase
+        public abstract class BuilderBase 
         {
             public abstract ServiceHost Build();
         }
 
         public class HostBuilder : BuilderBase
         {
-            private readonly IWebHost _webhost;
+            private readonly IWebHost _webHost;
             private IBusClient _bus;
-            public HostBuilder(IWebHost webHost, IBusClient busClient)
+
+            public HostBuilder(IWebHost webHost)
             {
-                _webhost = webHost;
-                _bus = busClient;
+                _webHost = webHost;
             }
 
             public BusBuilder UseRabbitMq()
             {
-                _bus = (IBusClient)_webhost.Services.GetService(typeof(IBusClient));
-                return new BusBuilder(_webhost, _bus);
-                     
+                _bus = (IBusClient)_webHost.Services.GetService(typeof(IBusClient));
+
+                return new BusBuilder(_webHost, _bus);
             }
 
             public override ServiceHost Build()
             {
-                throw new NotImplementedException();
+                return new ServiceHost(_webHost);
             }
-
-            
         }
 
         public class BusBuilder : BuilderBase
         {
-            private readonly IWebHost _webhost;
-            private IBusClient _bus;
+            private readonly IWebHost _webHost;
+            private IBusClient _bus; 
+
             public BusBuilder(IWebHost webHost, IBusClient bus)
             {
-                _webhost = webHost;
+                _webHost = webHost;
                 _bus = bus;
             }
 
             public BusBuilder SubscribeToCommand<TCommand>() where TCommand : ICommand
             {
-                var handler = (ICommandHandler<TCommand>)_webhost.Services
-                       .GetService(typeof(ICommandHandler<TCommand>));
+                var handler = (ICommandHandler<TCommand>)_webHost.Services
+                    .GetService(typeof(ICommandHandler<TCommand>));
                 _bus.WithCommandHandlerAsync(handler);
 
                 return this;
             }
 
-            public BusBuilder SubscribeToEvent<TEvent>() where TEvent: IEvent
+            public BusBuilder SubscribeToEvent<TEvent>() where TEvent : IEvent
             {
-                var handler = (ICommandHandler<TEvent>)_webhost.Services
-                       .GetService(typeof(ICommandHandler<TEvent>));
+                var handler = (IEventHandler<TEvent>)_webHost.Services
+                    .GetService(typeof(IEventHandler<TEvent>));
                 _bus.WithEventHandlerAsync(handler);
 
                 return this;
@@ -96,10 +92,8 @@ namespace Shipment.Common.Services
 
             public override ServiceHost Build()
             {
-                throw new NotImplementedException();
+                return new ServiceHost(_webHost);
             }
         }
-
-
     }
 }

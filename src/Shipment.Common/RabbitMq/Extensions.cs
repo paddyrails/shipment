@@ -1,15 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
+using System.Reflection;
+using System.Threading.Tasks;
+using Shipment.Common.Commands;
+using Shipment.Common.Events;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RawRabbit;
 using RawRabbit.Instantiation;
 using RawRabbit.Pipe;
-using Shipment.Common.Commands;
-using Shipment.Common.Events;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shipment.Common.RabbitMq
 {
@@ -18,20 +15,17 @@ namespace Shipment.Common.RabbitMq
         public static Task WithCommandHandlerAsync<TCommand>(this IBusClient bus,
             ICommandHandler<TCommand> handler) where TCommand : ICommand
             => bus.SubscribeAsync<TCommand>(msg => handler.HandleAsync(msg),
-                ctx => ctx.UseConsumerConfiguration(cfg =>
-                    cfg.FromDeclaredQueue(Queue => Queue.WithName(GetQueueName<TCommand>()))));
-
+                ctx => ctx.UseConsumerConfiguration(cfg => 
+                cfg.FromDeclaredQueue(q => q.WithName(GetQueueName<TCommand>()))));
 
         public static Task WithEventHandlerAsync<TEvent>(this IBusClient bus,
-           IEventHandler<TEvent> handler) where TEvent : IEvent
-           => bus.SubscribeAsync<TEvent>(msg => handler.HandleAsync(msg),
-               ctx => ctx.UseConsumerConfiguration(cfg =>
-                   cfg.FromDeclaredQueue(Queue => Queue.WithName(GetQueueName<TEvent>()))));
-
+            IEventHandler<TEvent> handler) where TEvent : IEvent
+            => bus.SubscribeAsync<TEvent>(msg => handler.HandleAsync(msg),
+                ctx => ctx.UseConsumerConfiguration(cfg => 
+                cfg.FromDeclaredQueue(q => q.WithName(GetQueueName<TEvent>()))));
 
         private static string GetQueueName<T>()
             => $"{Assembly.GetEntryAssembly().GetName()}/{typeof(T).Name}";
-
 
         public static void AddRabbitMq(this IServiceCollection services, IConfiguration configuration)
         {
@@ -45,5 +39,4 @@ namespace Shipment.Common.RabbitMq
             services.AddSingleton<IBusClient>(_ => client);
         }
     }
-
 }

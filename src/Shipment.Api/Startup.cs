@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Shipment.Api.Handlers;
+// using Shipment.Api.Repositories;
+// using Shipment.Common.Auth;
+using Shipment.Common.Events;
+// using Shipment.Common.Mongo;
+using Shipment.Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Shipment.Api.Handlers;
-using Shipment.Common.Events;
-using Shipment.Common.RabbitMq;
 
 namespace Shipment.Api
 {
@@ -27,8 +30,11 @@ namespace Shipment.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            // services.AddJwt(Configuration);
             services.AddRabbitMq(Configuration);
-            services.AddScoped<IEventHandler<ActivityCreated>, ActivityCreatedHandler> ();
+            // services.AddMongoDB(Configuration);
+            services.AddScoped<IEventHandler<ActivityCreated>, ActivityCreatedHandler>();
+            // services.AddScoped<IActivityRepository, ActivityRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +44,8 @@ namespace Shipment.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            // app.ApplicationServices.GetService<IDatabaseInitializer>().InitializeAsync();
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

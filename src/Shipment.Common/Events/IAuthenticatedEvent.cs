@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System;
 
 namespace Shipment.Common.Events
 {
     public interface IAuthenticatedEvent : IEvent
     {
-        Guid UserId { get; }
+         Guid UserId { get; }
     }
 }

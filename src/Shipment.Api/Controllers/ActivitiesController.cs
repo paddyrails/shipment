@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using RawRabbit;
 using Shipment.Common.Commands;
 using System;
@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shipment.Api.Controllers
 {
+    [Route("activities")]
     public class ActivitiesController : Controller
     {
         private readonly IBusClient _busClient;
@@ -16,7 +17,7 @@ namespace Shipment.Api.Controllers
             _busClient = busClient;
         }
         
-        [HttpGet("")]
+        [HttpPost("")]
         public async Task<IActionResult> Post([FromBody]CreateActivity command)
         {
             command.Id = Guid.NewGuid();

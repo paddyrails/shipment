@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Shipment.Common.Events
 {
     public class AuthenticateUserRejected : IRejectedEvent
     {
-        public string Email{ get; }
-        public string Reason { get; }
+        public string Email { get; }
         public string Code { get; }
+        public string Reason { get; }
 
-        protected AuthenticateUserRejected() { }
-
-        public AuthenticateUserRejected(string email, string reason, string code)
+        protected AuthenticateUserRejected()
         {
-            Email = email;
-            Reason = reason;
-            Code = code;
         }
 
+        public AuthenticateUserRejected(string email,
+            string code, string reason)
+        {
+            Email = email;
+            Code = code;
+            Reason = reason;
+        }         
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using RawRabbit;
 using Shipment.Common.Commands;
 using System;
@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shipment.Api.Controllers
 {
+    [Route("users")]
     public class UsersController : Controller
     {
         private readonly IBusClient _busClient;
@@ -15,12 +16,13 @@ namespace Shipment.Api.Controllers
         {
             _busClient = busClient;
         }
-
-        [HttpGet("register")]
+        
+        [HttpPost("")]
         public async Task<IActionResult> Post([FromBody]CreateUser command)
         {
-            await _busClient.PublishAsync(command);
-            return Accepted();
+           Console.WriteLine("in UserController");
+           await _busClient.PublishAsync(command);
+           return Accepted();
         }
     }
 }

@@ -1,0 +1,12 @@
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\bin\Debug\netcoreapp2.0\Shipment.Services.Identity.deps.json
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\bin\Debug\netcoreapp2.0\Shipment.Services.Identity.runtimeconfig.json
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\bin\Debug\netcoreapp2.0\Shipment.Services.Identity.runtimeconfig.dev.json
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\bin\Debug\netcoreapp2.0\Shipment.Services.Identity.dll
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\bin\Debug\netcoreapp2.0\Shipment.Services.Identity.pdb
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\bin\Debug\netcoreapp2.0\Shipment.Common.dll
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\bin\Debug\netcoreapp2.0\Shipment.Common.pdb
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\obj\Debug\netcoreapp2.0\Shipment.Services.Identity.csproj.CoreCompileInputs.cache
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\obj\Debug\netcoreapp2.0\Shipment.Services.Identity.AssemblyInfoInputs.cache
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\obj\Debug\netcoreapp2.0\Shipment.Services.Identity.AssemblyInfo.cs
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\obj\Debug\netcoreapp2.0\Shipment.Services.Identity.dll
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Services.Identity\obj\Debug\netcoreapp2.0\Shipment.Services.Identity.pdb

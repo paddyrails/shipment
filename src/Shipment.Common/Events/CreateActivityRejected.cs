@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System;
 
 namespace Shipment.Common.Events
 {
@@ -10,9 +8,12 @@ namespace Shipment.Common.Events
         public string Reason { get; }
         public string Code { get; }
 
-        protected CreateActivityRejected() { }
+        protected CreateActivityRejected()
+        {
+        }
 
-        public CreateActivityRejected(Guid id, string reason, string code)
+        public CreateActivityRejected(Guid id, 
+            string reason, string code)
         {
             Id = id;
             Reason = reason;

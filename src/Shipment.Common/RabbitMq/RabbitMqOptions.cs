@@ -1,12 +1,8 @@
-﻿using RawRabbit.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using RawRabbit.Configuration;
 
 namespace Shipment.Common.RabbitMq
 {
     public class RabbitMqOptions : RawRabbitConfiguration
     {
-
     }
 }

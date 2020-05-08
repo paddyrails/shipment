@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Shipment.Common.Commands;
+using Shipment.Common.Mongo;
+using Shipment.Common.RabbitMq;
+using Shipment.Services.Activities.Domain.Repositories;
+using Shipment.Services.Activities.Handlers;
+using Shipment.Services.Activities.Repositories;
+using Shipment.Services.Activities.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +31,14 @@ namespace Shipment.Services.Activities
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddLogging();
+            services.AddMongoDb(Configuration);
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IActivityRepository, ActivityRepository>();
+            services.AddScoped<IDatabaseSeeder, CustomMongoSeeder>();
+            services.AddRabbitMq(Configuration);
+            services.AddScoped<ICommandHandler<CreateActivity>, CreateActivityHandler>();
+            services.AddScoped<IActivityService, ActivityService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,7 +48,7 @@ namespace Shipment.Services.Activities
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.ApplicationServices.GetService<IDatabaseInitializer>().InitializeAsync();
             app.UseMvc();
         }
     }

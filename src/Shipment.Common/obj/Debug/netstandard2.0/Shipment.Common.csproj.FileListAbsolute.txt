@@ -1,4 +1,8 @@
-C:\paddy\research\microservices\shipment\src\Shipment.Common\obj\Debug\netstandard2.0\Shipment.Common.csproj.CoreCompileInputs.cache
-C:\paddy\research\microservices\shipment\src\Shipment.Common\obj\Debug\netstandard2.0\Shipment.Common.AssemblyInfoInputs.cache
-C:\paddy\research\microservices\shipment\src\Shipment.Common\obj\Debug\netstandard2.0\Shipment.Common.AssemblyInfo.cs
-C:\paddy\research\microservices\shipment\src\Shipment.Common\obj\Debug\netstandard2.0\Shipment.Common.csprojAssemblyReference.cache
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Common\bin\Debug\netstandard2.0\Shipment.Common.deps.json
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Common\bin\Debug\netstandard2.0\Shipment.Common.dll
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Common\bin\Debug\netstandard2.0\Shipment.Common.pdb
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Common\obj\Debug\netstandard2.0\Shipment.Common.csproj.CoreCompileInputs.cache
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Common\obj\Debug\netstandard2.0\Shipment.Common.AssemblyInfoInputs.cache
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Common\obj\Debug\netstandard2.0\Shipment.Common.AssemblyInfo.cs
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Common\obj\Debug\netstandard2.0\Shipment.Common.dll
+C:\paddy\research\microservices\redo\shipment\src\Shipment.Common\obj\Debug\netstandard2.0\Shipment.Common.pdb

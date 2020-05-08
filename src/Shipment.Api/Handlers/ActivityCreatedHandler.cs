@@ -1,14 +1,34 @@
-﻿using Shipment.Common.Events;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+// using Shipment.Api.Models;
+// using Shipment.Api.Repositories;
+using Shipment.Common.Events;
 
 namespace Shipment.Api.Handlers
 {
     public class ActivityCreatedHandler : IEventHandler<ActivityCreated>
     {
-        public async Task HandleAsync(ActivityCreated @event)
+        // private readonly IActivityRepository _repository;
+
+        // public ActivityCreatedHandler(IActivityRepository repository)
+        // {
+        //     _repository = repository;
+        // }
+
+        // public async Task HandleAsync(ActivityCreated @event)
+        // {
+        //     await _repository.AddAsync(new Activity
+        //     {
+        //         Id = @event.Id,
+        //         UserId = @event.UserId,
+        //         Category = @event.Category,
+        //         Name = @event.Name,
+        //         CreatedAt = @event.CreatedAt,
+        //         Description = @event.Description
+        //     });
+        //     Console.WriteLine($"Activity created: {@event.Name}");
+        // }
+         public async Task HandleAsync(ActivityCreated @event)
         {
             await Task.CompletedTask;
             Console.WriteLine($"Activity created: {@event.Name}");

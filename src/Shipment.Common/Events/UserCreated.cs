@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Shipment.Common.Events
 {
-    public class UserCreated: IEvent
+    public class UserCreated : IEvent
     {
-        public string Email { get;  }
+        public string Email { get; }
         public string Name { get; }
 
-        protected UserCreated() { }
+        protected UserCreated()
+        {
+        }
 
         public UserCreated(string email, string name)
         {
